@@ -132,8 +132,7 @@ userRouter.put('/:userId', (req, res, next) => {
     const email = req.body.email;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
-    console.log(userId);
-    
+
     //Check that all required fields exist, else send a 400 error
     if(!userName || !password || !email || !firstName || !lastName){
         res.sendStatus(400);
@@ -166,5 +165,58 @@ userRouter.put('/:userId', (req, res, next) => {
         }
     });
 });
+
+//Add a PRO membership to a particular user
+userRouter.put('/:userId/addPro', (req, res, next) => {
+    const userId = req.params.userId;
+
+    const sql = "UPDATE Users SET pro_member = 1 WHERE Users.user_id = ?";
+    const values = [userId];
+
+    //Run the SQL to add PRO membership
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, user){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({user: user});
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
+//Remove a PRO membership from a particular user
+userRouter.put('/:userId/removePro', (req, res, next) => {
+    const userId = req.params.userId;
+
+    const sql = "UPDATE Users SET pro_member = 0 WHERE Users.user_id = ?";
+    const values = [userId];
+
+    //Run the SQL to add PRO membership
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, user){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({user: user});
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
 
 module.exports = userRouter;
