@@ -4,15 +4,34 @@ const dbConnection = require('../sql/sql');
 
 const userRouter = express.Router();
 
+/*
+ * Helper function to Hash Password
+ */
+const passwordHash = function(password){
+    //Encrypt password using AES 256-bit encryption
+    jsaes.AES_Init();
+
+    let key = new Array(32);
+    for(let i = 0; i < 32; i++){
+        key[i] = i;
+    }
+
+    jsaes.AES_ExpandKey(key);
+    jsaes.AES_Encrypt(password, key);
+
+    jsaes.AES_Done();
+}
+
 userRouter.param('userId', (req, res, next, userId) => {
-    const sql = 'SELECT * FROM Users WHERE Users.user_id=' + userId;
+    const sql = 'SELECT * FROM Users WHERE Users.user_id=?';
+    const values = [userId];
     
     dbConnection.getConnection(function(err, conn) {
         if(err){
             res.sendStatus(500);
         } else {
             // Do something with the connection
-            conn.query(sql, function(err, user){
+            conn.query(sql, values, function(err, user){
                 if(err){
                     next(err);
                 } else {
@@ -67,6 +86,9 @@ userRouter.post('/', (req, res, next) => {
         res.sendStatus(400);
     }
 
+    //Hash the password
+    passwordHash(password);
+
     //Get the current date and convert it to MySQL DATE format
     let signUpDate;
     signUpDate = new Date();
@@ -77,19 +99,6 @@ userRouter.post('/', (req, res, next) => {
     ('00' + signUpDate.getUTCMinutes()).slice(-2) + ':' + 
     ('00' + signUpDate.getUTCSeconds()).slice(-2);
     console.log(`SignUpDate: ${signUpDate}`);
-
-    //Encrypt password using AES 256-bit encryption
-    jsaes.AES_Init();
-
-    let key = new Array(32);
-    for(let i = 0; i < 32; i++){
-        key[i] = i;
-    }
-
-    jsaes.AES_ExpandKey(key);
-    jsaes.AES_Encrypt(password, key);
-
-    jsaes.AES_Done();
 
     //Insert values into database
     const sql = 'INSERT INTO Users (user_name, password_hash, email, first_name, last_name, member_since)' + 
@@ -107,6 +116,48 @@ userRouter.post('/', (req, res, next) => {
                     res.sendStatus(404);
                 } else {
                     res.status(201).json({user: user});
+                }
+                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
+userRouter.put('/:userId', (req, res, next) => {
+    const userId = req.params.userId;
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const email = req.body.email;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    console.log(userId);
+    
+    //Check that all required fields exist, else send a 400 error
+    if(!userName || !password || !email || !firstName || !lastName){
+        res.sendStatus(400);
+    }
+
+    //Hash the password
+    passwordHash(password);
+
+    const sql = "UPDATE Users SET user_name = ?, password_hash = ?, email = ?, first_name = ?, last_name = ? " + 
+        "WHERE Users.user_id = ?";
+    console.log(sql);
+    const values = [userName, password, email, firstName, lastName, userId];
+
+    //Run the SQL to edit the users database entry
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, user){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({user: user});
                 }
                 
             });
