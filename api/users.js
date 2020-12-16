@@ -22,6 +22,7 @@ const passwordHash = function(password){
     jsaes.AES_Done();
 }
 
+//Param middleware for the user Id
 userRouter.param('userId', (req, res, next, userId) => {
     const sql = 'SELECT * FROM Users WHERE Users.user_id=?';
     const values = [userId];
@@ -50,6 +51,7 @@ userRouter.param('userId', (req, res, next, userId) => {
 
 });
 
+//Get a JSON object containing all users in the database
 userRouter.get('/', (req, res, next) => {
     dbConnection.getConnection(function(err, conn) {
         if(err){
@@ -70,10 +72,13 @@ userRouter.get('/', (req, res, next) => {
     });
 });
 
+//Get a single user from the database by User Id
 userRouter.get('/:userId', (req, res, next) => {
     res.status(200).json({user: req.user});
 });
 
+//Add a new user to the database
+//Note: Pro Member defaults to 0 (false)
 userRouter.post('/', (req, res, next) => {
     const userName = req.body.userName;
     const password = req.body.password;
@@ -125,6 +130,7 @@ userRouter.post('/', (req, res, next) => {
     });
 });
 
+//Make a change to user information
 userRouter.put('/:userId', (req, res, next) => {
     const userId = req.params.userId;
     const userName = req.body.userName;
