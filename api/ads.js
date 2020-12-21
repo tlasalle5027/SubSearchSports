@@ -52,8 +52,8 @@ adRouter.get('/', (req, res, next) => {
     });
 });
 
-//Get a single ad from the database by User Id
-userRouter.get('/:adId', (req, res, next) => {
+//Get a single ad from the database by Ad Id
+adRouter.get('/:adId', (req, res, next) => {
     res.status(200).json({ad: req.ad});
 });
 
