@@ -48,7 +48,6 @@ userRouter.param('userId', (req, res, next, userId) => {
             dbConnection.releaseConnection(conn);
         }
     });
-
 });
 
 //Get a JSON object containing all users in the database
