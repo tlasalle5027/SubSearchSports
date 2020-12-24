@@ -102,8 +102,7 @@ userRouter.post('/', (req, res, next) => {
     ('00' + signUpDate.getUTCHours()).slice(-2) + ':' + 
     ('00' + signUpDate.getUTCMinutes()).slice(-2) + ':' + 
     ('00' + signUpDate.getUTCSeconds()).slice(-2);
-    console.log(`SignUpDate: ${signUpDate}`);
-
+    
     //Insert values into database
     const sql = 'INSERT INTO Users (user_name, password_hash, email, first_name, last_name, member_since)' + 
         ' VALUES (?, ?, ?, ?, ?, ?)';
@@ -148,7 +147,6 @@ userRouter.put('/:userId', (req, res, next) => {
 
     const sql = "UPDATE Users SET user_name = ?, password_hash = ?, email = ?, first_name = ?, last_name = ? " + 
         "WHERE Users.user_id = ?";
-    console.log(sql);
     const values = [userName, password, email, firstName, lastName, userId];
 
     //Run the SQL to edit the users database entry

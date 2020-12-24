@@ -94,7 +94,7 @@ adRouter.post('/', (req, res, next) => {
     ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [posterId, datePosted, dateNeeded, locName, locAddOne, locAddTwo, locCity, 
                     locState, locZip, sportNeeded, posNeeded, adBody];
-    console.log(values);
+                    
     //Run the SQL to add an ad to the database
     dbConnection.getConnection(function(err, conn) {
         if(err){
@@ -113,9 +113,6 @@ adRouter.post('/', (req, res, next) => {
             dbConnection.releaseConnection(conn);
         }
     });
-
-
-
 });
 
 
