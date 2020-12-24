@@ -94,7 +94,7 @@ adRouter.post('/', (req, res, next) => {
     ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     const values = [posterId, datePosted, dateNeeded, locName, locAddOne, locAddTwo, locCity, 
                     locState, locZip, sportNeeded, posNeeded, adBody];
-                    
+
     //Run the SQL to add an ad to the database
     dbConnection.getConnection(function(err, conn) {
         if(err){
@@ -108,6 +108,79 @@ adRouter.post('/', (req, res, next) => {
                     res.status(201).json({ad: ad});
                 }
                 
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
+//Update an ad in the database
+adRouter.put('/:adId', (req, res, next) => {
+    const adId = req.params.adId;
+    const posterId = req.body.postedBy;
+    const dateNeeded = req.body.dateNeeded;
+    const locName = req.body.locName;
+    const locAddOne = req.body.locAddOne;
+    const locAddTwo = req.body.locAddTwo;
+    const locCity = req.body.locCity;
+    const locState = req.body.locState;
+    const locZip = req.body.locZip;
+    const sportNeeded = req.body.sportNeeded;
+    const posNeeded = req.body.posNeeded;
+    const adBody = req.body.adBody;
+
+    if(!posterId || !dateNeeded || !locName || !locAddOne || !locCity || 
+        !locState || !locZip || !sportNeeded || !posNeeded || !adBody){
+            res.sendStatus(400);
+        }
+
+    const sql = 'UPDATE Ads SET posted_by_id = ?, date_needed = ?, location_name = ?, ' + 
+                'location_address_one = ?, location_address_two = ?, location_city = ?, ' + 
+                'location_state = ?, location_zip = ?, sport_needed = ?, position_needed = ?, ' + 
+                'ad_body = ? WHERE Ads.ad_id = ?';
+    const values = [posterId, dateNeeded, locName, locAddOne, locAddTwo, locCity, 
+                    locState, locZip, sportNeeded, posNeeded, adBody, adId];
+
+    //Run the SQL to update the ad
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, ad){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({ad: ad});
+                }
+                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
+//Delete an ad from the database
+adRouter.delete('/:adId', (req, res, next) => {
+    const adId = req.params.adId;
+
+    const sql = "DELETE FROM Ads where Ads.ad_id = ?";
+    const values = [adId];
+
+    //Run the SQL to delete the ad
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, ad){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.sendStatus(204);
+                }                
             });
             // Don't forget to release the connection when finished!
             dbConnection.releaseConnection(conn);

@@ -228,24 +228,23 @@ userRouter.delete('/:userId', (req, res, next) => {
     const sql = "DELETE FROM Users where Users.user_id = ?";
     const values = [userId];
 
-        //Run the SQL to delete the user
-        dbConnection.getConnection(function(err, conn) {
-            if(err){
-                res.sendStatus(500);
-            } else {
-                // Do something with the connection
-                conn.query(sql, values, function(err, user){
-                    if(err){
-                        res.sendStatus(404);
-                    } else {
-                        res.sendStatus(204);
-                    }                
-                });
-                // Don't forget to release the connection when finished!
-                dbConnection.releaseConnection(conn);
-            }
-        });
-
+    //Run the SQL to delete the user
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, user){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.sendStatus(204);
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
 });
 
 module.exports = userRouter;
