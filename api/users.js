@@ -1,6 +1,6 @@
 const express = require('express');
 const jsaes = require('jsaes');
-const dbConnection = require('../sql/sql');
+const {dbConnection, multiStatementPool} = require('../sql/sql');
 
 const userRouter = express.Router();
 
@@ -225,11 +225,13 @@ userRouter.put('/:userId/removePro', (req, res, next) => {
 userRouter.delete('/:userId', (req, res, next) => {
     const userId = req.params.userId;
 
-    const sql = "DELETE FROM Users where Users.user_id = ?";
-    const values = [userId];
+    const sql = "DELETE FROM Ads where Ads.posted_by_id = ?;" + 
+                "DELETE FROM Profiles where Profiles.profile_id = ?;" + 
+                "DELETE FROM Users where Users.user_id = ?";
+    const values = [userId, userId, userId];
 
     //Run the SQL to delete the user
-    dbConnection.getConnection(function(err, conn) {
+    multiStatementPool.getConnection(function(err, conn) {
         if(err){
             res.sendStatus(500);
         } else {

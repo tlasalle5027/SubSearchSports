@@ -1,5 +1,5 @@
 const express = require('express');
-const dbConnection = require('../sql/sql');
+const { dbConnection } = require('../sql/sql');
 
 const adRouter = express.Router();
 
@@ -102,7 +102,7 @@ adRouter.post('/', (req, res, next) => {
         } else {
             // Do something with the connection
             conn.query(sql, values, function(err, ad){
-                if(err){
+                if(err){                    
                     res.sendStatus(404);
                 } else {
                     res.status(201).json({ad: ad});
