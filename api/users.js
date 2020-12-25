@@ -225,6 +225,8 @@ userRouter.put('/:userId/removePro', (req, res, next) => {
 userRouter.delete('/:userId', (req, res, next) => {
     const userId = req.params.userId;
 
+    //To delete a user, we must also delete all the ads the user
+    //posted, as well as their profile.
     const sql = "DELETE FROM Ads where Ads.posted_by_id = ?;" + 
                 "DELETE FROM Profiles where Profiles.profile_id = ?;" + 
                 "DELETE FROM Users where Users.user_id = ?";
