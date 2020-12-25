@@ -221,12 +221,11 @@ userRouter.put('/:userId/removePro', (req, res, next) => {
     });
 });
 
-//Delete a user and their corresponding profile
+//Delete a user
 userRouter.delete('/:userId', (req, res, next) => {
     const userId = req.params.userId;
 
     const sql = "DELETE FROM Users where Users.user_id = ?";
-    const sqlProfile = "DELETE FROM Profiles where Profiles.profile_id = ?";
     const values = [userId];
 
     //Run the SQL to delete the user
@@ -243,13 +242,6 @@ userRouter.delete('/:userId', (req, res, next) => {
                 }                
             });
 
-            conn.query(sqlProfile, values, function(err, profile){
-                if(err){
-                    res.sendStatus(404);
-                } else {
-                    res.sendStatus(204);
-                }                
-            });
             // Don't forget to release the connection when finished!
             dbConnection.releaseConnection(conn);
         }
