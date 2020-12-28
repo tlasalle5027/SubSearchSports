@@ -22,6 +22,76 @@ const passwordHash = function(password){
     jsaes.AES_Done();
 }
 
+/*
+ * Helper middleware to check if Username
+ * exists in the system
+ */
+const userNameExists = function(req, res, next){
+
+    //Check if userName is in use
+    const sql = "SELECT * FROM Users WHERE Users.user_name = ?";
+    const values = [req.body.userName];
+
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, user){
+                if(err){
+                    next(err);
+                } else {
+                    if(user.length > 0){
+                        res.status(400).send(
+                            {message: "Error! Username is already in use"}
+                        );
+                        return;
+                    } else {
+                        next();
+                    }
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+}
+
+/*
+ * Helper middleware to check if eMail
+ * exists in the system
+ */
+const emailExists = function(req, res, next){
+
+    //Check if userName is in use
+    const sql = "SELECT * FROM Users WHERE Users.email = ?";
+    const values = [req.body.email];
+
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, values, function(err, user){
+                if(err){
+                    next(err);
+                } else {
+                    if(user.length > 0){
+                        res.status(400).send(
+                            {message: "Error! e-Mail address is already in use"}
+                        );
+                        return;
+                    } else {
+                        next();
+                    }
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+} 
+
 //Param middleware for the user Id
 userRouter.param('userId', (req, res, next, userId) => {
     const sql = 'SELECT * FROM Users WHERE Users.user_id=?';
@@ -78,7 +148,7 @@ userRouter.get('/:userId', (req, res, next) => {
 
 //Add a new user to the database
 //Note: Pro Member defaults to 0 (false)
-userRouter.post('/', (req, res, next) => {
+userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
     const userName = req.body.userName;
     const password = req.body.password;
     const email = req.body.email;
