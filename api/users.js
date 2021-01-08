@@ -1,5 +1,5 @@
 const express = require('express');
-const jsaes = require('jsaes');
+const bcrypt = require('bcrypt');
 const {dbConnection, multiStatementPool} = require('../sql/sql');
 
 const userRouter = express.Router();
@@ -8,18 +8,11 @@ const userRouter = express.Router();
  * Helper function to Hash Password
  */
 const passwordHash = function(password){
-    //Encrypt password using AES 256-bit encryption
-    jsaes.AES_Init();
-
-    let key = new Array(32);
-    for(let i = 0; i < 32; i++){
-        key[i] = i;
-    }
-
-    jsaes.AES_ExpandKey(key);
-    jsaes.AES_Encrypt(password, key);
-
-    jsaes.AES_Done();
+    const salt = bcrypt.genSaltSync();
+    const hashword = bcrypt.hashSync(password, salt);
+    console.log(hashword);
+    
+    return hashword;
 }
 
 /*
@@ -161,7 +154,8 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
     }
 
     //Hash the password
-    passwordHash(password);
+    const hashword = passwordHash(password);
+    //console.log(hashword);
 
     //Get the current date and convert it to MySQL DATE format
     let signUpDate;
@@ -176,7 +170,7 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
     //Insert values into database
     const sql = 'INSERT INTO Users (user_name, password_hash, email, first_name, last_name, member_since)' + 
         ' VALUES (?, ?, ?, ?, ?, ?)';
-    const values = [userName, password, email, firstName, lastName, signUpDate];
+    const values = [userName, hashword, email, firstName, lastName, signUpDate];
 
     //Run the SQL to add user to the database
     dbConnection.getConnection(function(err, conn) {
@@ -186,6 +180,7 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
             // Do something with the connection
             conn.query(sql, values, function(err, user){
                 if(err){
+                    console.log(err.message);
                     res.sendStatus(404);
                 } else {
                     res.status(201).json({user: user});
