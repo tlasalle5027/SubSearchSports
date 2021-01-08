@@ -30,7 +30,7 @@ authRouter.post('/login', (req, res, next) => {
                         return res.status(404).send({message: "User not found"});
                     }
     
-                    if(!(bcrypt.compareSync(password, user[0].password_hash))){
+                    if(!(bcrypt.compareSync(password, user[0].password_hash.toString()))){
                         return res.status(401).send({
                             accessToken: null,
                             message: "Invalid Password!"
