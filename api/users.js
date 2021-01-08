@@ -10,7 +10,6 @@ const userRouter = express.Router();
 const passwordHash = function(password){
     const salt = bcrypt.genSaltSync();
     const hashword = bcrypt.hashSync(password, salt);
-    console.log(hashword);
     
     return hashword;
 }
@@ -155,7 +154,6 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
 
     //Hash the password
     const hashword = passwordHash(password);
-    //console.log(hashword);
 
     //Get the current date and convert it to MySQL DATE format
     let signUpDate;
@@ -180,7 +178,6 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
             // Do something with the connection
             conn.query(sql, values, function(err, user){
                 if(err){
-                    console.log(err.message);
                     res.sendStatus(404);
                 } else {
                     res.status(201).json({user: user});
