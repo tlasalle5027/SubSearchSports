@@ -1,6 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const {dbConnection, multiStatementPool} = require('../sql/sql');
+const verification = require('../auth/user_verify');
+const verifyToken = verification.verifyToken;
 
 const userRouter = express.Router();
 
@@ -191,7 +193,7 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
 });
 
 //Make a change to user information
-userRouter.put('/:userId', (req, res, next) => {
+userRouter.put('/:userId', verifyToken, (req, res, next) => {
     const userId = req.params.userId;
     const userName = req.body.userName;
     const password = req.body.password;
@@ -232,7 +234,7 @@ userRouter.put('/:userId', (req, res, next) => {
 });
 
 //Add a PRO membership to a particular user
-userRouter.put('/:userId/addPro', (req, res, next) => {
+userRouter.put('/:userId/addPro', verifyToken, (req, res, next) => {
     const userId = req.params.userId;
 
     const sql = "UPDATE Users SET pro_member = 1 WHERE Users.user_id = ?";
@@ -258,7 +260,7 @@ userRouter.put('/:userId/addPro', (req, res, next) => {
 });
 
 //Remove a PRO membership from a particular user
-userRouter.put('/:userId/removePro', (req, res, next) => {
+userRouter.put('/:userId/removePro', verifyToken, (req, res, next) => {
     const userId = req.params.userId;
 
     const sql = "UPDATE Users SET pro_member = 0 WHERE Users.user_id = ?";
@@ -284,7 +286,7 @@ userRouter.put('/:userId/removePro', (req, res, next) => {
 });
 
 //Delete a user
-userRouter.delete('/:userId', (req, res, next) => {
+userRouter.delete('/:userId', verifyToken, (req, res, next) => {
     const userId = req.params.userId;
 
     //To delete a user, we must also delete all the ads the user

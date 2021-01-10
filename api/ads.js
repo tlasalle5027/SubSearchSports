@@ -1,5 +1,8 @@
 const express = require('express');
 const { dbConnection } = require('../sql/sql');
+const verification = require('../auth/user_verify');
+const verifyToken = verification.verifyToken;
+
 
 const adRouter = express.Router();
 
@@ -69,7 +72,7 @@ adRouter.get('/:adId', (req, res, next) => {
 });
 
 //Add a new ad to the database
-adRouter.post('/', (req, res, next) => {
+adRouter.post('/', verifyToken, (req, res, next) => {
     const posterId = req.body.postedBy;
     const datePosted = formatDate(new Date());
     const dateNeeded = req.body.dateNeeded;
@@ -116,7 +119,7 @@ adRouter.post('/', (req, res, next) => {
 });
 
 //Update an ad in the database
-adRouter.put('/:adId', (req, res, next) => {
+adRouter.put('/:adId', verifyToken, (req, res, next) => {
     const adId = req.params.adId;
     const posterId = req.body.postedBy;
     const dateNeeded = req.body.dateNeeded;
@@ -163,7 +166,7 @@ adRouter.put('/:adId', (req, res, next) => {
 });
 
 //Delete an ad from the database
-adRouter.delete('/:adId', (req, res, next) => {
+adRouter.delete('/:adId', verifyToken, (req, res, next) => {
     const adId = req.params.adId;
 
     const sql = "DELETE FROM Ads where Ads.ad_id = ?";
@@ -187,6 +190,5 @@ adRouter.delete('/:adId', (req, res, next) => {
         }
     });
 });
-
 
 module.exports = adRouter;

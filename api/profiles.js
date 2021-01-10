@@ -1,5 +1,7 @@
 const express = require('express');
 const { dbConnection } = require('../sql/sql');
+const verification = require('../auth/user_verify');
+const verifyToken = verification.verifyToken;
 
 const profileRouter = express.Router();
 
@@ -37,7 +39,7 @@ profileRouter.get('/:profileId', (req, res, next) => {
 });
 
 //Post a new user profile to the database
-profileRouter.post('/', (req, res, next) => {
+profileRouter.post('/', verifyToken, (req, res, next) => {
     const profileId = req.body.profileId;
     const userCity = req.body.userCity;
     const userState = req.body.userState;
@@ -87,7 +89,7 @@ profileRouter.post('/', (req, res, next) => {
 });
 
 //Update a user profile
-profileRouter.put('/:profileId', (req, res, next) => {
+profileRouter.put('/:profileId', verifyToken, (req, res, next) => {
     const profileId = req.params.profileId;
     const userCity = req.body.userCity;
     const userState = req.body.userState;

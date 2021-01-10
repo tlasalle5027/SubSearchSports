@@ -3,7 +3,7 @@ const config = require('../config/auth.config');
 
 module.exports = {
     verifyToken: function(req, res, next){
-        const token = req.headers["access-token"];
+        const token = req.headers["x-access-token"];
 
         if (!token) {
             return res.status(403).send({
