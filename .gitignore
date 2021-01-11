@@ -1,2 +1,2 @@
-sql/sql.js
-config/auth.config.js
+backend/sql/sql.js
+backend/config/auth.config.js
