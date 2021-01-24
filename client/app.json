@@ -1,0 +1,12 @@
+{
+  "name": "Sub_Search_Sports",
+  "displayName": "Sub_Search_Sports",
+  "expo": {
+    "name": "Sub_Search_Sports",
+    "slug": "Sub_Search_Sports",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
