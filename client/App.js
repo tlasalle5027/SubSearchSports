@@ -12,10 +12,8 @@ export default function App() {
       </View>
       <View style={styles.container}>      
         <Text>Hello World!</Text>
-        <StatusBar style="auto" />
-      </View>
-      <View>
         <Ad />
+        <StatusBar style="auto" />
       </View>
     </div>
     
@@ -28,5 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    top: '125px',
   },
 });
