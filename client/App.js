@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Ad from './components/Ads/Ads';
+import AdList from './components/AdList/AdList';
 import Header from './components/Header/Header';
 
 export default function App() {
@@ -10,9 +10,8 @@ export default function App() {
       <View>
         <Header />
       </View>
-      <View style={styles.container}>      
-        <Text>Hello World!</Text>
-        <Ad />
+      <View style={styles.container}>
+        <AdList />
         <StatusBar style="auto" />
       </View>
     </div>
