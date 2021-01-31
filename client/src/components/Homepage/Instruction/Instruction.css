@@ -1,0 +1,39 @@
+.instruction{
+    background-color: rgba(255, 0, 0, 0.7);
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.instruction h1{
+    color: #FFF;
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 900;
+    margin-right: 8rem;    
+}
+
+.instruction p{
+    color: #FFF;
+    display: inline-block;    
+    margin-right: 2.5rem;
+}
+
+.instruction num{
+    color: #F02;
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.numberCircle {
+    background-color: #FFF;
+    width: 50px;
+    line-height: 50px;
+    border-radius: 25%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    border: 2px solid #FFF;
+}
