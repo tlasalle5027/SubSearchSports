@@ -13,6 +13,20 @@ class Instruction extends React.Component{
                             <td><num className="numberCircle">3</num><h1>PLAY!</h1></td>
                         </tr>
                         <tr>
+                            <td><img
+                                alt="Input Form"
+                                className="icon" 
+                                src="https://img.icons8.com/dotty/80/ffffff/text-input-form.png"/></td>
+                            <td><img
+                                alt="Communication"
+                                className="icon" 
+                                src="https://img.icons8.com/wired/64/ffffff/communication.png"/></td>
+                            <td><img
+                                alt="Hockey icon"
+                                className="icon" 
+                                src="https://img.icons8.com/ios-filled/100/ffffff/hockey.png"/></td>
+                        </tr>
+                        <tr>
                             <td><p>Register an account and fill out your profile</p></td>
                             <td><p>Post an Ad looking for players, or respond to one</p></td>
                             <td><p>Join your new teammates and get out and PLAY!</p></td>
