@@ -2,6 +2,7 @@ import React from 'react';
 import './Homepage.css';
 
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import Instruction from './Instruction/Instruction';
 
 class Homepage extends React.Component{
@@ -15,6 +16,7 @@ class Homepage extends React.Component{
                     <p>Getting started with our system is as easy as...</p>
                     <Instruction />
                 </section>
+                <Footer />
             </body>
         );
     }
