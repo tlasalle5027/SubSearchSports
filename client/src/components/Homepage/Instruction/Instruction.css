@@ -1,16 +1,7 @@
 .icon{
-    height: 96px;       
-    width: 96px;
-}
-
-.commIcon{
-    height: 96px;
-    width: 96px;
-}
-
-.sportIcon{
-    height: 96px;
-    width: 96px;
+    height: 100px;       
+    width: 100px;
+    margin: 0 11rem 0 7rem;
 }
 
 .instruction{
@@ -23,7 +14,7 @@
     display: inline-block;
     font-size: 32px;
     font-weight: 900;    
-    margin-right: 8rem;    
+    margin-right: 7rem;    
 }
 
 .instruction p{
@@ -55,6 +46,7 @@
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
+    width: 85%;
 }
 
 .tr {
