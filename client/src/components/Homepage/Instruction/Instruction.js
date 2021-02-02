@@ -6,32 +6,32 @@ class Instruction extends React.Component{
         return (
             <section>
                 <section className="instruction">
-                    <table className="center">
-                        <tr>
-                            <td><num className="numberCircle">1</num><h1>Register</h1></td>
-                            <td><num className="numberCircle">2</num><h1>Post/Respond</h1></td>
-                            <td><num className="numberCircle">3</num><h1>PLAY!</h1></td>
-                        </tr>
-                        <tr>
-                            <td><img
+                    <div className="instTable">
+                        <div className="tr">
+                            <num className="numberCircle">1</num><h1>Register</h1>
+                            <num className="numberCircle">2</num><h1>Post/Respond</h1>
+                            <num className="numberCircle">3</num><h1>PLAY!</h1>
+                        </div>
+                        <div className="tr">
+                            <img
                                 alt="Input Form"
                                 className="icon" 
-                                src="https://img.icons8.com/dotty/80/ffffff/text-input-form.png"/></td>
-                            <td><img
+                                src="https://img.icons8.com/dotty/80/ffffff/text-input-form.png"/>
+                            <img
                                 alt="Communication"
                                 className="icon" 
-                                src="https://img.icons8.com/wired/64/ffffff/communication.png"/></td>
-                            <td><img
-                                alt="Hockey icon"
+                                src="https://img.icons8.com/wired/64/ffffff/communication.png"/>
+                            <img
+                                alt="Sports Icon"
                                 className="icon" 
-                                src="https://img.icons8.com/ios-filled/100/ffffff/hockey.png"/></td>
-                        </tr>
-                        <tr>
-                            <td><p>Register an account and fill out your profile</p></td>
-                            <td><p>Post an Ad looking for players, or respond to one</p></td>
-                            <td><p>Join your new teammates and get out and PLAY!</p></td>
-                        </tr>
-                    </table>
+                                src="https://img.icons8.com/ios-filled/100/ffffff/hockey.png"/>
+                        </div>
+                        <div className="tr">
+                            <p>Register an account and fill out your profile</p>
+                            <p>Post an Ad looking for players, or respond to one</p>
+                            <p>Join your new teammates and get out and PLAY!</p>
+                        </div>
+                    </div>
                 </section>
             </section>            
             

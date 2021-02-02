@@ -1,18 +1,20 @@
-.center{
-    margin-left: auto;
-    margin-right: auto;
+.icon{
+    height: 96px;       
+    width: 96px;
 }
 
-.icon{
-    height: 128px;
-    width: 128px;
+.commIcon{
+    height: 96px;
+    width: 96px;
+}
+
+.sportIcon{
+    height: 96px;
+    width: 96px;
 }
 
 .instruction{
-    background-color: rgba(255, 0, 0, 0.7);
-    display: inline-block;
-    height: auto;
-    vertical-align: middle;
+    background-color: rgba(255, 0, 0, 0.6);
     width: 100%;
 }
 
@@ -21,13 +23,13 @@
     display: inline-block;
     font-size: 32px;
     font-weight: 900;    
-    margin-right: 3rem;    
+    margin-right: 8rem;    
 }
 
 .instruction p{
     color: #FFF;
     display: inline-block;        
-    margin-right: 3rem;
+    margin-right: 4rem;
 }
 
 .instruction num{
@@ -47,3 +49,18 @@
     font-weight: 700;
     border: 2px solid #FFF;
 }
+
+.instTable {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tr {
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+
