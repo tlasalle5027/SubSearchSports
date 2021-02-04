@@ -41,7 +41,7 @@ nav ul {
     display: inline-block;
 }
 
-nav li {
+nav li{
     color: #FF0000;
     font-family: 'Lato', sans-serif;
     font-size: 1.5rem;
@@ -50,4 +50,9 @@ nav li {
     vertical-align: center;
     margin-right: 50px;
     margin-top: 20px;
+}
+
+nav li a{
+    color: #FF0000;
+    text-decoration: none;
 }
