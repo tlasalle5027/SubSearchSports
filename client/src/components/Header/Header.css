@@ -25,6 +25,7 @@
     position: fixed;
     background-color: #0EFF47;
     top: 0;
+    z-index: 99;
 }
 
 img {
