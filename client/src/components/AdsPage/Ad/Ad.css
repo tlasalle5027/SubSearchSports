@@ -1,5 +1,29 @@
 .ad{
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
     outline: #F00 solid 2px;
+}
+
+.adIntro{
+    display: flex;
+    float: left;
+    text-align: left;
+}
+
+.ad h1{
+    color: #F00;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sportIcon{
+    align-self: center;
+    display: flex;
+    float: right;
+    justify-self: center;
+}
+
+.sportNeeded{
+    height: 96px;
+    width: 96px;
 }

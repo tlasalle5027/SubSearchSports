@@ -5,7 +5,6 @@ import Ad from '../Ad/Ad';
 
 class AdList extends React.Component{
 
-
     render(){
         return(
             <section className="adList">
