@@ -1,0 +1,5 @@
+.ad{
+    display: flex;
+    flex-flow: column nowrap;
+    outline: #F00 solid 2px;
+}
