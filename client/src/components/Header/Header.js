@@ -13,8 +13,8 @@ class Header extends React.Component {
 
     render(){
         return (
-            <nav class="navigation-bar">
-                <a href="/"><img alt="Sub Search Sport Logo" class="logo" src={logo} /></a>
+            <nav className="navigation-bar">
+                <a href="/"><img alt="Sub Search Sport Logo" className="logo" src={logo} /></a>
                 <ul>
                     <li><SearchBar /></li>
                     <li><a href="/ads">Ads</a></li>

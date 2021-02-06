@@ -8,9 +8,9 @@ class Instruction extends React.Component{
                 <section className="instruction">
                     <div className="instTable">
                         <div className="tr">
-                            <num className="numberCircle">1</num><h1>Register</h1>
-                            <num className="numberCircle">2</num><h1>Post/Respond</h1>
-                            <num className="numberCircle">3</num><h1>PLAY!</h1>
+                            <span className="numberCircle">1</span><h1>Register</h1>
+                            <span className="numberCircle">2</span><h1>Post/Respond</h1>
+                            <span className="numberCircle">3</span><h1>PLAY!</h1>
                         </div>
                         <div className="tr">
                             <img

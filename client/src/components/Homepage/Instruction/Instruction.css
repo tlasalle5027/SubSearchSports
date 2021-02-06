@@ -23,7 +23,7 @@
     margin-right: 4rem;
 }
 
-.instruction num{
+.instruction span{
     color: #F02;
     display: inline-block;
     margin-left: .5rem;

@@ -1,3 +1,14 @@
+.countNumber{
+    color: #F00;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.homePage{
+    position: relative;
+    top: 60px;
+}
+
 .logInButton{
     background-color: #FF0000;
     border: 2px;
@@ -18,11 +29,6 @@
 .logInButton:hover {
     background-color: rgba(233, 65, 65, 0.774);
   }
-
-body{
-    position: relative;
-    top: 90px;
-}
 
 section{
     font-family: 'Lato', sans-serif;
