@@ -135,6 +135,30 @@ userRouter.get('/', (req, res, next) => {
     });
 });
 
+//Get a count of all users
+userRouter.get('/count', (req, res, next) => {
+
+    const sql = "SELECT * FROM Users";
+
+    //Run the SQL to get user Count
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, function(err, users){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({count: users.length});
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
 //Get a single user from the database by User Id
 userRouter.get('/:userId', (req, res, next) => {
     res.status(200).json({user: req.user});
