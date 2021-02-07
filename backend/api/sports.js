@@ -13,9 +13,9 @@ sportRouter.param('sportId', (req, res, next, sportId) => {
             res.sendStatus(500);
         } else {
             // Do something with the connection
-            conn.query(sql, values, function(err, sport){
-                if(err){
-                    next(err);
+            conn.query(sql, values, function(error, sport){
+                if(error){
+                    next(error);
                 } else {
                     if(sport.length > 0){
                         req.sport = sport;
@@ -38,8 +38,8 @@ sportRouter.get('/', (req, res, next) => {
             res.sendStatus(500);
         } else {
             // Do something with the connection
-            conn.query("SELECT * FROM Sports", function(err, sports){
-                if(err){
+            conn.query("SELECT * FROM Sports", function(error, sports){
+                if(error){
                     res.sendStatus(404);
                 } else {
                     res.status(200).json({sports: sports});
@@ -62,8 +62,8 @@ sportRouter.get('/count', (req, res, next) => {
             res.sendStatus(500);
         } else {
             // Do something with the connection
-            conn.query(sql, function(err, sports){
-                if(err){
+            conn.query(sql, function(error, sports){
+                if(error){
                     res.sendStatus(404);
                 } else {
                     res.status(200).json({count: sports.length});
