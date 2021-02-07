@@ -9,16 +9,19 @@ class Homepage extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            userCount: 0,
-            sportsCount: 12,
-        }
+        this.state = { }
     }
 
     componentDidMount(){
         apiCalls.getUserCount().then(count => {
             if(count){
                 this.setState({userCount: count});
+            }
+        });
+
+        apiCalls.getSportCount().then(count => {
+            if(count){
+                this.setState({sportsCount: count});
             }
         });
     }

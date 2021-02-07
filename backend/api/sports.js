@@ -52,6 +52,29 @@ sportRouter.get('/', (req, res, next) => {
     });
 });
 
+//Get a count of all sports
+sportRouter.get('/count', (req, res, next) => {
+    const sql = "SELECT * FROM Sports";
+
+    //Run the SQL to get sport Count
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, function(err, sports){
+                if(err){
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({count: sports.length});
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
 //Get a single sport from the database by Sport Id
 sportRouter.get('/:sportId', (req, res, next) => {
     res.status(200).json({sport: req.sport});

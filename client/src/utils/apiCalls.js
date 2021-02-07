@@ -11,7 +11,21 @@ apiCalls.getUserCount = () => {
         }
 
         return response.json().then(jsonResponse => {
-            console.log(jsonResponse.count);
+            return jsonResponse.count;
+        });
+    });
+}
+
+apiCalls.getSportCount = () => {
+    const url = `${baseUrl}/sport/count/`;
+
+    return fetch(url).then(response => {
+
+        if (!response.ok) {
+            return new Promise(resolve => resolve(0));
+        }
+
+        return response.json().then(jsonResponse => {
             return jsonResponse.count;
         });
     });
