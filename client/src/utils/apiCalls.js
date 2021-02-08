@@ -1,6 +1,11 @@
 const apiCalls = {};
 const baseUrl = 'http://localhost:4000/api';
 
+/**
+ * The following three API calls get counts of Users,
+ * Sports and Ads in the system to be displayed dynamically 
+ * on the homepage.
+ */
 apiCalls.getUserCount = () => {
     const url = `${baseUrl}/user/count/`;
 
