@@ -9,7 +9,11 @@ class Homepage extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = { }
+        this.state = {
+            userCount: 0,
+            sportsCount: 0,
+            adCount: 4,
+         };
     }
 
     componentDidMount(){
@@ -24,6 +28,12 @@ class Homepage extends React.Component{
                 this.setState({sportsCount: count});
             }
         });
+
+        apiCalls.getAdCount().then(count => {
+            if(count){
+                this.setState({adCount: count});
+            }
+        })
     }
 
     render(){
@@ -38,6 +48,8 @@ class Homepage extends React.Component{
                     <p>We have about <span className="countNumber">{this.state.userCount}</span> users </p>
                     <p>Looking to play or looking for players!</p>
                     <p>In about <span className="countNumber">{this.state.sportsCount}</span> different sports</p>
+                    <p>There are <span className="countNumber">{this.state.adCount}</span> ads on our system</p>
+                    <p>waiting for your response!</p>
                 </section>
                 <section>
                     <h1>JOIN US TODAY! GET OUT AND PLAY!</h1>

@@ -66,6 +66,31 @@ adRouter.get('/', (req, res, next) => {
     });
 });
 
+//Get a count of all ads
+adRouter.get('/count', (req, res, next) => {
+
+    const sql = "SELECT COUNT(*) AS ad_count FROM Ads";
+
+    //Run the SQL to get user Count
+    dbConnection.getConnection(function(err, conn) {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            // Do something with the connection
+            conn.query(sql, function(err, ads){
+                if(err){
+                    console.log(err.message);
+                    res.sendStatus(404);
+                } else {
+                    res.status(200).json({count: ads[0].ad_count});
+                }                
+            });
+            // Don't forget to release the connection when finished!
+            dbConnection.releaseConnection(conn);
+        }
+    });
+});
+
 //Get a single ad from the database by Ad Id
 adRouter.get('/:adId', (req, res, next) => {
     res.status(200).json({ad: req.ad});
