@@ -1,3 +1,4 @@
 node_modules/
 backend/sql/sql.js
 backend/config/auth.config.js
+client/.eslintcache

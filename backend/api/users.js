@@ -138,7 +138,7 @@ userRouter.get('/', (req, res, next) => {
 //Get a count of all users
 userRouter.get('/count', (req, res, next) => {
 
-    const sql = "SELECT * FROM Users";
+    const sql = "SELECT COUNT(*) AS user_count FROM Users";
 
     //Run the SQL to get user Count
     dbConnection.getConnection(function(err, conn) {
@@ -150,7 +150,7 @@ userRouter.get('/count', (req, res, next) => {
                 if(err){
                     res.sendStatus(404);
                 } else {
-                    res.status(200).json({count: users.length});
+                    res.status(200).json({count: users[0].user_count});
                 }                
             });
             // Don't forget to release the connection when finished!
