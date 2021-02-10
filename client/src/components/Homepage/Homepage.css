@@ -1,13 +1,16 @@
 .countNumber{
-    color: #F00;
+    color: #FFF;
     font-size: 1.5rem;
     font-weight: bolder;
 }
 
 .homePage{
+    background-image: url(../../resources/img/bg/baseball-field.jpg);
+    background-position: center center; 
+    background-size: cover;
     position: relative;
-    top: 60px;
 }
+
 
 .logInButton{
     background-color: #FF0000;
@@ -18,7 +21,7 @@
     font-family: 'Lato', sans-serif;
     font-size: 1.25rem;
     font-weight: 500;
-    margin-top: 0rem;
+    margin-bottom: 2rem;
     padding: 1.75rem .5rem;
     text-align: center;
     transition: background-color .25s;
@@ -30,6 +33,12 @@
     background-color: rgba(233, 65, 65, 0.774);
   }
 
+.userCount{    
+    background-color: rgba(150, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+}
+
 section{
     font-family: 'Lato', sans-serif;
     position: relative;
@@ -38,4 +47,12 @@ section{
 
 h1{
     color: #F00;
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: 2px 2px #000000;
+}
+
+p{
+    color: #FFF;
+    text-shadow: 1px 1px #000000;
 }
