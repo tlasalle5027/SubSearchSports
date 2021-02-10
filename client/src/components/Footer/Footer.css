@@ -17,3 +17,9 @@ footer a{
 footer p{
     color: #FFF;
 }
+
+@media only screen and (max-width: 838px) {
+    footer{       
+        top: 97px;
+    }
+}

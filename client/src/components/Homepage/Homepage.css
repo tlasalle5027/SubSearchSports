@@ -7,8 +7,9 @@
 .homePage{
     background-image: url(../../resources/img/bg/baseball-field.jpg);
     background-position: center center; 
-    background-size: cover;
+    background-size: cover;    
     position: relative;
+    width: 100%;
 }
 
 
@@ -45,14 +46,20 @@ section{
     text-align: center;
 }
 
-h1{
+.homePage h1{
     color: #F00;
     font-size: 2rem;
     font-weight: 900;
     text-shadow: 2px 2px #000000;
 }
 
-p{
+.homePage p{
     color: #FFF;
     text-shadow: 1px 1px #000000;
+}
+
+@media only screen and (max-width: 838px) {
+    .homePage{       
+        top: 97px;
+    }
 }
