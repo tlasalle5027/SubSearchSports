@@ -21,7 +21,7 @@
 
 .navigation-bar {
     width: 100%;
-    height: 22%;
+    height: 155px;
     position: fixed;
     background-color: #0EC339;
     top: 0;
@@ -56,3 +56,46 @@ nav li a{
     color: #FF0000;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 517px) {
+    .logInButton{
+        font-size: .75rem;
+        font-weight: 200;
+        width: 3rem;
+    }
+
+    .logo{
+        display: block;
+        margin: auto;
+    }
+
+    img{
+        height: 75px;
+        width: 150px;
+    }
+
+    nav ul{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 838px) {
+    .logInButton{
+        display: inline-block;
+        margin-bottom: 2rem;
+    }
+
+    .navigation-bar {
+        height: 250px;
+    }
+
+    nav li{
+        margin-top: 10px;
+    }
+  }
+
+@media only screen and (max-width: 1495px) {
+    span .SearchBar {
+      display: none;
+    }
+  }
