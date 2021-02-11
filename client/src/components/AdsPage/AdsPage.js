@@ -8,9 +8,9 @@ class AdsPage extends React.Component{
 
     render(){
         return(
-            <body>
+            <section className="adsPage">
                 <AdList />
-            </body>
+            </section>
         );
     }
 }
