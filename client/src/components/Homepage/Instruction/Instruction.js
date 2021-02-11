@@ -8,11 +8,11 @@ class Instruction extends React.Component{
                 <section className="instruction">
                     <div className="instTable">
                         <div className="tr">
-                            <span className="numberCircle">1</span><h1>Register</h1>
+                            <span className="numberCircle">1 </span><h1>Register</h1>
                             <span className="numberCircle">2</span><h1>Post/Respond</h1>
                             <span className="numberCircle">3</span><h1>PLAY!</h1>
                         </div>
-                        <div className="tr">
+                        <div className="iconRow">
                             <img
                                 alt="Input Form"
                                 className="icon" 

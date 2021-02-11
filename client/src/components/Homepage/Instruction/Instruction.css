@@ -39,6 +39,7 @@
     font-size: 32px;
     font-weight: 700;
     border: 2px solid #FFF;
+    box-shadow: 2px 2px #000;
 }
 
 .instTable {
@@ -55,4 +56,83 @@
     width: 100%;
 }
 
+@media only screen and (max-width: 400px) {
+    .instruction h1{
+        font-size: 12px;
+        font-weight: 100;
+        margin-left: .5rem;
+    }
 
+    .instruction span{
+        margin-left: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 875px) {
+    .instTable{
+        flex-direction: row;
+    }
+
+    .instruction p{
+        margin-top: 3rem;
+        margin-bottom: 6rem;
+    }
+
+    .instruction span{
+        color: #F02;
+        display: inline-block;
+        margin-left: 5rem;
+        margin-right: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 1065px) {
+    .instruction p{
+        display: flex;
+        flex-flow: column nowrap;
+    }    
+}
+
+@media only screen and (max-width: 1298px) {
+    .iconRow{
+        display: none;
+    }
+
+    .instruction h1{
+        font-size: 24px;
+        font-weight: 450;
+        margin-right: 5rem;   
+    }
+
+    .numberCircle {
+        width: 25px;
+        line-height: 25px;
+        border-radius: 25%;
+        font-size: 24px;
+    }
+
+}
+
+@media only screen and (max-width: 1358px) {
+    .icon{
+        height: 75px;       
+        width: 75px;
+        margin: 0 11.5rem 0 6.5rem;
+    }
+
+    .instruction p{      
+        font-size: 12px;
+        margin-right: 10rem;
+    }
+}
+
+@media only screen and (max-width: 1413px) {
+    .icon{
+        height: 75px;       
+        width: 75px;
+    }
+
+    .instruction p{      
+        margin-right: 3rem;
+    }
+}

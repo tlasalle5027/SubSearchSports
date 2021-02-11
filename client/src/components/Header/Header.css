@@ -2,6 +2,7 @@
     background-color: #FF0000;
     border: 2px;
     border-radius: 44px;
+    box-shadow: 2px 2px #000;
     color: #FFF;
     cursor: pointer;
     font-family: 'Lato', sans-serif;
