@@ -1,0 +1,29 @@
+.logInButton{
+    cursor: pointer;
+    width: 7.11rem;
+    padding: .88rem 0;
+    border-radius: 60px;
+    box-shadow: 2px 2px #000;
+    background-color: #FF0000;
+    text-align: center;
+    font-size: .833rem;
+    transition: background-color .25s;
+    border: 0px;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.logInButton:hover{    
+    background-color: rgba(233, 65, 65, 0.932);
+}
+
+.Login input {
+    width: 287px;
+    padding: .88rem 5rem;
+    border: 2px inset #f00;
+    border-radius: 3px;
+    margin-bottom: 2.22rem;
+    color: #010c3f;
+    text-align: center;
+    font-size: 1rem;
+  }

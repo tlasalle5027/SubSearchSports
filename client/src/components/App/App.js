@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 
 import Homepage from '../Homepage/Homepage';
 import AdsPage from '../AdsPage/AdsPage';
+import LogInSignUp from '../LogInSignUp/LogInSignUp';
 
 class App extends React.Component{
   render(){
@@ -16,6 +17,7 @@ class App extends React.Component{
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/ads" component={AdsPage} />
+          <Route exact path="/login" component={LogInSignUp} />
         </Switch>          
         <Footer />
       </body>

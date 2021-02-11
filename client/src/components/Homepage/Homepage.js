@@ -53,7 +53,7 @@ class Homepage extends React.Component{
                 </section>
                 <section>
                     <h1>JOIN US TODAY! GET OUT AND PLAY!</h1>
-                    <button className="logInButton">Log In/Sign Up</button>
+                    <button className="logInButtonHomePage">Log In/Sign Up</button>
                 </section>                               
             </section>
         );
