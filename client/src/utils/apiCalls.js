@@ -51,4 +51,25 @@ apiCalls.getAdCount = () => {
     });    
 }
 
+/**
+ * The following two API calls get the list of
+ * Ads and Users in the system
+ */
+apiCalls.getAds = () => {
+    const url = `${baseUrl}/ad/`;
+
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            return new Promise(resolve => resolve([]));
+        }
+
+        return response.json().then(jsonResponse => {
+            const ads = [];
+            jsonResponse.ads.map(ad => ads.push(ad));
+
+            return ads;
+        });
+    });
+}
+
 export default apiCalls;

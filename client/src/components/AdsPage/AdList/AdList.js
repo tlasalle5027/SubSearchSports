@@ -8,10 +8,11 @@ class AdList extends React.Component{
     render(){
         return(
             <section className="adList">
-                <Ad />
-                <Ad />
-                <Ad />
-                <Ad />
+                {
+                    this.props.adList.map(ad => {
+                        return <Ad ad={ad} />
+                    })
+                }
             </section>
         );
     }
