@@ -17,10 +17,14 @@ class LogInSignUp extends React.Component{
                         <Tab>Sign Up</Tab>
                     </TabList>
 
-                    <TabPanel>
+                    <TabPanel>                        
+                        <h1>You are just a click away from</h1>
+                        <h1>finding a rec sports team to PLAY with!</h1>
                         <LogIn />                        
                     </TabPanel>
-                    <TabPanel>
+                    <TabPanel>                        
+                        <h1>You are just a click away from</h1>
+                        <h1>finding a rec sports team to PLAY with!</h1>
                         <SignUp />
                     </TabPanel>
                 </Tabs>
