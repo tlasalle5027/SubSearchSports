@@ -53,7 +53,7 @@ apiCalls.getAdCount = () => {
 
 /**
  * The following two API calls get the list of
- * Ads and Users in the system
+ * all Ads and Users in the system
  */
 apiCalls.getAds = () => {
     const url = `${baseUrl}/ad/`;
@@ -68,6 +68,23 @@ apiCalls.getAds = () => {
             jsonResponse.ads.map(ad => ads.push(ad));
 
             return ads;
+        });
+    });
+}
+
+apiCalls.getUsers = () => {
+    const url = `${baseUrl}/user/`;
+
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            return new Promise(resolve => resolve([]));
+        }
+
+        return response.json().then(jsonResponse => {
+            const users = [];
+            jsonResponse.users.map(user => users.push(user));
+
+            return users;
         });
     });
 }
