@@ -1,0 +1,17 @@
+.user{
+    display: flex;
+    flex-flow: row wrap;
+    outline: #F00 solid 2px;
+}
+
+.userIntro{
+    display: flex;
+    text-align: center;
+}
+
+.user h1{
+    color: #F00;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+}

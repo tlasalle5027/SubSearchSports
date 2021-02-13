@@ -18,7 +18,7 @@ class Header extends React.Component {
                 <span className="SearchBar"><SearchBar /></span>
                 <ul>                    
                     <li><a href="/ads">Ads</a></li>
-                    <li>Users</li>
+                    <li><a href="/users">Users</a></li>
                     <li><a href="/login"><button className="logInButton">{this.state.loggedIn ? 'Log Out' : 'Log In/Sign Up'}</button></a></li>
                 </ul>
             </nav>
