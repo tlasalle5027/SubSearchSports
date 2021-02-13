@@ -98,7 +98,8 @@ adRouter.get('/:adId', (req, res, next) => {
 
 //Add a new ad to the database
 adRouter.post('/', verifyToken, (req, res, next) => {
-    const posterId = req.body.postedBy;
+    const adTitle = req.body.adTitle;
+    const posterId = req.body.postedBy;    
     const datePosted = formatDate(new Date());
     const dateNeeded = req.body.dateNeeded;
     const locName = req.body.locName;
@@ -111,17 +112,18 @@ adRouter.post('/', verifyToken, (req, res, next) => {
     const posNeeded = req.body.posNeeded;
     const adBody = req.body.adBody;
 
-    if(!posterId || !dateNeeded || !locName || !locAddOne || !locCity || 
-        !locState || !locZip || !sportNeeded || !posNeeded || !adBody){
+    if (!adTitle || !posterId || !dateNeeded || !locName || !locAddOne || 
+        !locCity || !locState || !locZip || !sportNeeded || !posNeeded ||
+        !adBody){
             res.sendStatus(400);
         }
 
-    const sql = 'INSERT INTO Ads (posted_by_id, date_posted, date_needed, location_name, ' + 
+    const sql = 'INSERT INTO Ads (ad_title, posted_by_id, date_posted, date_needed, location_name, ' + 
     'location_address_one, location_address_two, location_city, location_state, location_zip, ' + 
     'sport_needed, position_needed, ad_body)' + 
-    ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    const values = [posterId, datePosted, dateNeeded, locName, locAddOne, locAddTwo, locCity, 
-                    locState, locZip, sportNeeded, posNeeded, adBody];
+    ' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [adTitle, posterId, datePosted, dateNeeded, locName, locAddOne, locAddTwo, 
+                    locCity, locState, locZip, sportNeeded, posNeeded, adBody];
 
     //Run the SQL to add an ad to the database
     dbConnection.getConnection(function(err, conn) {
@@ -146,6 +148,7 @@ adRouter.post('/', verifyToken, (req, res, next) => {
 //Update an ad in the database
 adRouter.put('/:adId', verifyToken, (req, res, next) => {
     const adId = req.params.adId;
+    const adTitle = req.body.adTitle;
     const posterId = req.body.postedBy;
     const dateNeeded = req.body.dateNeeded;
     const locName = req.body.locName;
@@ -158,17 +161,17 @@ adRouter.put('/:adId', verifyToken, (req, res, next) => {
     const posNeeded = req.body.posNeeded;
     const adBody = req.body.adBody;
 
-    if(!posterId || !dateNeeded || !locName || !locAddOne || !locCity || 
+    if (!adTitle || !posterId || !dateNeeded || !locName || !locAddOne || !locCity || 
         !locState || !locZip || !sportNeeded || !posNeeded || !adBody){
             res.sendStatus(400);
         }
 
-    const sql = 'UPDATE Ads SET posted_by_id = ?, date_needed = ?, location_name = ?, ' + 
+    const sql = 'UPDATE Ads SET ad_title = ?, posted_by_id = ?, date_needed = ?, location_name = ?, ' + 
                 'location_address_one = ?, location_address_two = ?, location_city = ?, ' + 
                 'location_state = ?, location_zip = ?, sport_needed = ?, position_needed = ?, ' + 
                 'ad_body = ? WHERE Ads.ad_id = ?';
-    const values = [posterId, dateNeeded, locName, locAddOne, locAddTwo, locCity, 
-                    locState, locZip, sportNeeded, posNeeded, adBody, adId];
+    const values = [adTitle, posterId, dateNeeded, locName, locAddOne, locAddTwo, 
+                    locCity, locState, locZip, sportNeeded, posNeeded, adBody, adId];
 
     //Run the SQL to update the ad
     dbConnection.getConnection(function(err, conn) {
