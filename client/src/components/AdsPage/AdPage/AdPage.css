@@ -1,0 +1,9 @@
+.adPage{
+    margin: 3rem auto;
+}
+
+@media only screen and (max-width: 838px) {
+    .adPage{       
+        top: 97px;
+    }
+}

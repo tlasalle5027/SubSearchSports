@@ -17,6 +17,10 @@
     text-shadow: 1px 1px #000;
 }
 
+.ad a{
+    text-decoration: none;
+}
+
 .sportIcon{
     align-self: center;
     display: flex;

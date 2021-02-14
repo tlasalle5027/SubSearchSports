@@ -89,4 +89,22 @@ apiCalls.getUsers = () => {
     });
 }
 
+/**
+ * The following two API Calls get a single
+ * Ad or User based on id
+ */
+apiCalls.getAd = id => {
+    const url = `${baseUrl}/ad/${id}`;
+
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            return new Promise(resolve => resolve([]));
+        }
+
+        return response.json().then(jsonResponse => {
+            return jsonResponse.ad;
+        });    
+    });
+}
+
 export default apiCalls;

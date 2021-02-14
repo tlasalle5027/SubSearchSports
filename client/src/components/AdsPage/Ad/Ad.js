@@ -5,14 +5,19 @@ class Ad extends React.Component{
     constructor(props){
         super(props);
 
+        this.createAdLink = this.createAdLink.bind(this);
         this.createGoogleMapsLink = this.createGoogleMapsLink.bind(this);
         this.createSportIcon = this.createSportIcon.bind(this);
     }
 
-    createGoogleMapsLink(){
-        return `https://maps.google.com/?q=${this.props.ad.location_address_one}, ${this.props.ad.location_city} ${this.props.ad.location_state}, ${this.props.ad.location_zip}`;
+    createAdLink(){
+        return `/ads/${this.props.ad.ad_id}`;
     }
 
+    createGoogleMapsLink(){
+        return `https://maps.google.com/?q=${this.props.ad.location_name}, ${this.props.ad.location_address_one}, ${this.props.ad.location_city} ${this.props.ad.location_state}, ${this.props.ad.location_zip}`;
+    }
+    
     createSportIcon(){
         switch(this.props.ad.sport_needed){
             case 1:
@@ -35,7 +40,7 @@ class Ad extends React.Component{
         return(
             <section className="ad">
                 <section className="adInfo">
-                    <h1>{this.props.ad.ad_title}</h1>
+                    <a href={this.createAdLink()}><h1>{this.props.ad.ad_title}</h1></a>
                     <p>Posted By: {this.props.ad.posted_by_id}</p>
                     <a href={this.createGoogleMapsLink()}>{this.props.ad.location_name}</a>
                     <p>Date Posted: {this.props.ad.date_posted} | Date Needed: {this.props.ad.date_needed}</p>
