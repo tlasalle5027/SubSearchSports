@@ -12,7 +12,7 @@ class Homepage extends React.Component{
         this.state = {
             userCount: 0,
             sportsCount: 0,
-            adCount: 4,
+            adCount: 0,
          };
     }
 

@@ -17,7 +17,6 @@ class AdPage extends React.Component{
             console.log(ad);
             if(ad){                
                 this.setState({ ad: ad[0] });
-                console.log(this.state.ad.ad_title);
             }
         });
     }

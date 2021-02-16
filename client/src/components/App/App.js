@@ -10,6 +10,7 @@ import AdsPage from '../AdsPage/AdsPage';
 import UsersPage from '../UsersPage/UsersPage';
 import LogInSignUp from '../LogInSignUp/LogInSignUp';
 import AdPage from '../AdsPage/AdPage/AdPage';
+import UserProfile from '../UsersPage/UserProfile/UserProfile';
 
 class App extends React.Component{
   render(){
@@ -21,6 +22,7 @@ class App extends React.Component{
           <Route exact path="/ads" component={AdsPage} />
           <Route exact path="/ads/:id" component={AdPage}/>
           <Route exact path="/users" component={UsersPage} />
+          <Route exact path="/users/:id" component={UserProfile} />
           <Route exact path="/login" component={LogInSignUp} />
         </Switch>          
         <Footer />

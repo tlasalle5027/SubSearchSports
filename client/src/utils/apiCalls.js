@@ -91,7 +91,7 @@ apiCalls.getUsers = () => {
 
 /**
  * The following two API Calls get a single
- * Ad or User based on id
+ * Ad or user based on id
  */
 apiCalls.getAd = id => {
     const url = `${baseUrl}/ad/${id}`;
@@ -104,6 +104,38 @@ apiCalls.getAd = id => {
         return response.json().then(jsonResponse => {
             return jsonResponse.ad;
         });    
+    });
+}
+
+apiCalls.getUser = id => {
+    const url = `${baseUrl}/user/${id}`;
+
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            return new Promise(resolve => resolve([]));
+        }
+
+        return response.json().then(jsonResponse => {
+            return jsonResponse.user;
+        });    
+    });    
+}
+
+/**
+ * The following API Call gets a user's profile
+ * based on their user ID
+ */
+apiCalls.getUserProfile = id => {
+    const url = `${baseUrl}/user/profile/${id}`;
+
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            return new Promise(resolve => resolve([]));
+        }
+
+        return response.json().then(jsonResponse => {
+            return jsonResponse.profile;
+        });
     });
 }
 

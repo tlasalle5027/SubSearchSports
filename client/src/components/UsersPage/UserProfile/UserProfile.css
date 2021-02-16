@@ -1,0 +1,9 @@
+.userProfile{
+    margin: 3rem auto;
+}
+
+@media only screen and (max-width: 838px) {
+    .userProfile{       
+        top: 97px;
+    }
+}
