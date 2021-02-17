@@ -1,6 +1,7 @@
 .user{
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     outline: #F00 solid 2px;
 }
 
@@ -14,4 +15,8 @@
     font-size: 1.5rem;
     font-weight: bold;
     text-shadow: 1px 1px #000;
+}
+
+.user a{
+    text-decoration: none;
 }
