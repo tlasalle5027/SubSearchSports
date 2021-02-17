@@ -1,13 +1,7 @@
 .ad{
-    display: flex;
-    flex-flow: row wrap;
+    display: inline-block;
     outline: #F00 solid 2px;
-}
-
-.adIntro{
-    display: flex;
-    float: left;
-    text-align: left;
+    width: 100%;
 }
 
 .ad h1{
@@ -21,14 +15,7 @@
     text-decoration: none;
 }
 
-.sportIcon{
-    align-self: center;
-    display: flex;
-    float: right;
-    justify-self: center;
-}
-
 .sportNeeded{
-    height: 96px;
-    width: 96px;
+    height: 64px;
+    width: 64px;
 }

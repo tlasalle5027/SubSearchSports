@@ -10,7 +10,7 @@ class AdList extends React.Component{
             <section className="adList">
                 {
                     this.props.adList.map(ad => {
-                        return <Ad ad={ad} />
+                        return <Ad ad={ad} key={ad.ad_id} />
                     })
                 }
             </section>
