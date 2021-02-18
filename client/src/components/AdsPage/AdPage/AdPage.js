@@ -17,6 +17,7 @@ class AdPage extends React.Component{
         };
 
         this.createGoogleMapsLink = this.createGoogleMapsLink.bind(this);
+        this.createProfileLink = this.createProfileLink.bind(this);
     }
 
     componentDidMount(){
@@ -47,11 +48,15 @@ class AdPage extends React.Component{
         return `https://maps.google.com/?q=${this.state.ad.location_name}, ${this.state.ad.location_address_one}, ${this.state.ad.location_city} ${this.state.ad.location_state}, ${this.state.ad.location_zip}`;
     }
 
+    createProfileLink(){
+        return `/users/${this.state.ad.posted_by_id}`;
+    }
+
     render(){
         return(
             <section className="adPage">
                 <h1>{this.state.ad.ad_title}</h1>
-                <p>Posted by: {this.state.userName}</p>
+                <p>Posted by: <a href={this.createProfileLink()}>{this.state.userName}</a></p>
                 <p>Located at: <a href={this.createGoogleMapsLink()}>{this.state.ad.location_name}</a></p>
                 <h2>Date Posted: {this.state.datePosted}</h2>
                 <h2>Date Needed: {this.state.dateNeeded}</h2>

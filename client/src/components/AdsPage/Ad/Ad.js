@@ -11,6 +11,7 @@ class Ad extends React.Component{
 
         this.createAdLink = this.createAdLink.bind(this);
         this.createGoogleMapsLink = this.createGoogleMapsLink.bind(this);
+        this.createProfileLink = this.createProfileLink.bind(this);
         this.createSportIcon = this.createSportIcon.bind(this);
     }
 
@@ -28,6 +29,10 @@ class Ad extends React.Component{
 
     createGoogleMapsLink(){
         return `https://maps.google.com/?q=${this.props.ad.location_name}, ${this.props.ad.location_address_one}, ${this.props.ad.location_city} ${this.props.ad.location_state}, ${this.props.ad.location_zip}`;
+    }
+
+    createProfileLink(){
+        return `/users/${this.props.ad.posted_by_id}`;
     }
     
     createSportIcon(){
@@ -53,7 +58,7 @@ class Ad extends React.Component{
             <section className="ad">
                 <section className="adInfo">
                     <a href={this.createAdLink()}><h1>{this.props.ad.ad_title}</h1></a>
-                    <p>Posted By: {this.state.userInfo.user_name}</p>
+                    <p>Posted By: <a href={this.createProfileLink()}>{this.state.userInfo.user_name}</a></p>
                     <a href={this.createGoogleMapsLink()}>{this.props.ad.location_name}</a>
                     <p>Date Posted: {helpers.formatDate(this.props.ad.date_posted)}</p>
                     <p>Date Needed: {helpers.formatDate(this.props.ad.date_needed)}</p>
