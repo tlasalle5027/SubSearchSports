@@ -21,8 +21,7 @@
     margin-right: 2rem;
 }
 
-.sportsSquares{    
-    border: 2px solid #F00;
+.sportsSquares{
     display: flex;
     flex-flow: row nowrap;
     height: auto;
