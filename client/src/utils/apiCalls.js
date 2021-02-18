@@ -1,5 +1,5 @@
 const apiCalls = {};
-const baseUrl = 'http://localhost:4000/api';
+const baseUrl = 'http://192.168.0.28:4000/api';
 
 /**
  * The following three API calls get counts of Users,
@@ -136,6 +136,24 @@ apiCalls.getUserProfile = id => {
         return response.json().then(jsonResponse => {
             return jsonResponse.profile;
         });
+    });
+}
+
+/**
+ * The following API Call gets a sport's name
+ * based on the sport ID
+ */
+apiCalls.getSportName = id => {
+    const url = `${baseUrl}/sport/${id}`;
+
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            return new Promise(resolve => resolve([]));
+        }
+
+        return response.json().then(jsonResponse => {
+            return jsonResponse.sport;
+        })
     });
 }
 

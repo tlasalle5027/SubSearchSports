@@ -1,6 +1,8 @@
 import React from 'react';
 import './User.css';
 
+import helpers from '../../../utils/helpers';
+
 class User extends React.Component{
     constructor(props){
         super(props);
@@ -18,7 +20,7 @@ class User extends React.Component{
                 <section className="userInfo">
                     <a href={this.createProfileLink()}><h1>{this.props.user.user_name}</h1></a>
                     <p>{this.props.user.first_name + " " + this.props.user.last_name}</p>
-                    <p>Member Since: {this.props.user.member_since}</p>
+                    <p>Member Since: {helpers.formatDate(this.props.user.member_since)}</p>
                 </section>
             </section>
         );
