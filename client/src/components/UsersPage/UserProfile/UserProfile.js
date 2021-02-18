@@ -15,6 +15,7 @@ class UserProfile extends React.Component{
 
         this.createMailToLink = this.createMailToLink.bind(this);
         this.createGoogleMapsLink = this.createGoogleMapsLink.bind(this);
+        this.createSportSquares = this.createSportSquares.bind(this);
     }
 
     componentDidMount(){
@@ -37,17 +38,71 @@ class UserProfile extends React.Component{
 
     createMailToLink(){
         return `mailto:${this.state.user.email}?subject=I found you on Sub Search Sport`;
+    }
 
+    createSportSquares(){
+        console.log(this.state.profileInfo);
+        if(this.state.profileInfo.sport_02 == null){
+            return (
+                <section className="sportsSquares">
+                    <div className="sportSquare">
+                        <p>I play {this.state.profileInfo.sport_01}</p>
+                        <p>Positions: {this.state.profileInfo.sport_01_positions}</p>
+                        <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_01_skill} skill level</p>
+                    </div>
+                </section>
+            );
+        } else if(this.state.profileInfo.sport_03 == null){
+            return (
+                <section className="sportsSquares">
+                    <div className="sportSquare">
+                        <p>I play {this.state.profileInfo.sport_01}</p>
+                        <p>Positions: {this.state.profileInfo.sport_01_positions}</p>
+                        <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_01_skill} skill level</p>
+                    </div>
+                    <div className="sportSquare">
+                        <p>I play {this.state.profileInfo.sport_02}</p>
+                        <p>Positions: {this.state.profileInfo.sport_02_positions}</p>
+                        <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_02_skill} skill level</p>
+                    </div>
+                </section>
+            );
+        } else {
+            return (
+                <section className="sportsSquares">
+                    <div className="sportSquare">
+                        <p>I play {this.state.profileInfo.sport_01}</p>
+                        <p>Positions: {this.state.profileInfo.sport_01_positions}</p>
+                        <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_01_skill} skill level</p>
+                    </div>
+                    <div className="sportSquare">
+                        <p>I play {this.state.profileInfo.sport_02}</p>
+                        <p>Positions: {this.state.profileInfo.sport_02_positions}</p>
+                        <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_02_skill} skill level</p>
+                    </div>
+                    <div className="sportSquare">
+                        <p>I play {this.state.profileInfo.sport_03}</p>
+                        <p>Positions: {this.state.profileInfo.sport_03_positions}</p>
+                        <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_03_skill} skill level</p>                        
+                    </div>
+                </section>
+            );
+        }
     }
 
     render(){
         return(
             <section className="userProfile">
-                <h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
-                <h2>{this.state.user.user_name}</h2>
-                <p>Located in: <a href={this.createGoogleMapsLink()}>{this.state.profileInfo.user_city}, {this.state.profileInfo.user_state}</a></p>
-                <p>{this.state.profileInfo.profile_bio}</p>
-                <a href={this.createMailToLink()}><button className="contactPlayer">E-mail this User</button></a>
+                <section className="userInfo">
+                    <h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
+                    <h2>{this.state.user.user_name}</h2>
+                    <p>Located in: <a href={this.createGoogleMapsLink()}>{this.state.profileInfo.user_city}, {this.state.profileInfo.user_state}</a></p>
+                    <p>{this.state.profileInfo.profile_bio}</p>
+                </section>
+                {this.createSportSquares()}
+                <section className="contact">                    
+                    <a href={this.createMailToLink()}><button className="contactPlayer">E-mail this User</button></a>
+                </section>
             </section>
         );
     }
