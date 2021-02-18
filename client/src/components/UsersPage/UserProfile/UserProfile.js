@@ -10,7 +10,10 @@ class UserProfile extends React.Component{
         this.state = 
         { 
             user: [],
-            profileInfo: [] 
+            profileInfo: [],
+            sportNameOne: '',
+            sportNameTwo: '',
+            sportNameThree: '' 
         };
 
         this.createMailToLink = this.createMailToLink.bind(this);
@@ -28,6 +31,28 @@ class UserProfile extends React.Component{
         apiCalls.getUserProfile(this.props.match.params.id).then(profile =>{
             if(profile){                
                 this.setState({ profileInfo: profile[0] });
+            }            
+
+            apiCalls.getSportName(this.state.profileInfo.sport_01).then(sport => {
+                if(sport){
+                    this.setState({ sportNameOne: sport[0].sport_name });
+                }
+            });
+
+            if(this.state.profileInfo.sport_02 != null){
+                apiCalls.getSportName(this.state.profileInfo.sport_02).then(sport => {
+                    if(sport){
+                        this.setState({ sportNameTwo: sport[0].sport_name });
+                    }
+                });                
+            }
+
+            if(this.state.profileInfo.sport_03 != null){
+                apiCalls.getSportName(this.state.profileInfo.sport_03).then(sport => {
+                    if(sport){
+                        this.setState({ sportNameThree: sport[0].sport_name });
+                    }
+                });                
             }
         });
     }
@@ -46,7 +71,7 @@ class UserProfile extends React.Component{
             return (
                 <section className="sportsSquares">
                     <div className="sportSquare">
-                        <p>I play {this.state.profileInfo.sport_01}</p>
+                        <p>I play {this.state.sportNameOne}</p>
                         <p>Positions: {this.state.profileInfo.sport_01_positions}</p>
                         <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_01_skill} skill level</p>
                     </div>
@@ -56,12 +81,12 @@ class UserProfile extends React.Component{
             return (
                 <section className="sportsSquares">
                     <div className="sportSquare">
-                        <p>I play {this.state.profileInfo.sport_01}</p>
+                        <p>I play {this.state.sportNameOne}</p>
                         <p>Positions: {this.state.profileInfo.sport_01_positions}</p>
                         <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_01_skill} skill level</p>
                     </div>
                     <div className="sportSquare">
-                        <p>I play {this.state.profileInfo.sport_02}</p>
+                        <p>I play {this.state.sportNameTwo}</p>
                         <p>Positions: {this.state.profileInfo.sport_02_positions}</p>
                         <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_02_skill} skill level</p>
                     </div>
@@ -71,17 +96,17 @@ class UserProfile extends React.Component{
             return (
                 <section className="sportsSquares">
                     <div className="sportSquare">
-                        <p>I play {this.state.profileInfo.sport_01}</p>
+                        <p>I play {this.state.sportNameOne}</p>
                         <p>Positions: {this.state.profileInfo.sport_01_positions}</p>
                         <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_01_skill} skill level</p>
                     </div>
                     <div className="sportSquare">
-                        <p>I play {this.state.profileInfo.sport_02}</p>
+                        <p>I play {this.state.sportNameTwo}</p>
                         <p>Positions: {this.state.profileInfo.sport_02_positions}</p>
                         <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_02_skill} skill level</p>
                     </div>
                     <div className="sportSquare">
-                        <p>I play {this.state.profileInfo.sport_03}</p>
+                        <p>I play {this.state.sportNameThree}</p>
                         <p>Positions: {this.state.profileInfo.sport_03_positions}</p>
                         <p>On a scale of 1-10, I am a {this.state.profileInfo.sport_03_skill} skill level</p>                        
                     </div>
