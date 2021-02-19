@@ -172,6 +172,7 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
     const email = req.body.email;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
+    const hideLocation = req.body.hideLocation
 
     //Check that all required fields exist, else send a 400 error
     if(!userName || !password || !email || !firstName || !lastName){
@@ -192,9 +193,9 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
     ('00' + signUpDate.getUTCSeconds()).slice(-2);
     
     //Insert values into database
-    const sql = 'INSERT INTO Users (user_name, password_hash, email, first_name, last_name, member_since)' + 
-        ' VALUES (?, ?, ?, ?, ?, ?)';
-    const values = [userName, hashword, email, firstName, lastName, signUpDate];
+    const sql = 'INSERT INTO Users (user_name, password_hash, email, first_name, last_name, member_since, hide_location)' + 
+        ' VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const values = [userName, hashword, email, firstName, lastName, signUpDate, hideLocation];
 
     //Run the SQL to add user to the database
     dbConnection.getConnection(function(err, conn) {
@@ -224,6 +225,7 @@ userRouter.put('/:userId', verifyToken, (req, res, next) => {
     const email = req.body.email;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
+    const hideLocation = req.body.hideLocation;
 
     //Check that all required fields exist, else send a 400 error
     if(!userName || !password || !email || !firstName || !lastName){
@@ -233,9 +235,9 @@ userRouter.put('/:userId', verifyToken, (req, res, next) => {
     //Hash the password
     passwordHash(password);
 
-    const sql = "UPDATE Users SET user_name = ?, password_hash = ?, email = ?, first_name = ?, last_name = ? " + 
+    const sql = "UPDATE Users SET user_name = ?, password_hash = ?, email = ?, first_name = ?, last_name = ?, hide_location = ? " + 
         "WHERE Users.user_id = ?";
-    const values = [userName, password, email, firstName, lastName, userId];
+    const values = [userName, password, email, firstName, lastName, hideLocation, userId];
 
     //Run the SQL to edit the users database entry
     dbConnection.getConnection(function(err, conn) {

@@ -18,6 +18,7 @@ class UserProfile extends React.Component{
 
         this.createMailToLink = this.createMailToLink.bind(this);
         this.createGoogleMapsLink = this.createGoogleMapsLink.bind(this);
+        this.createHiddenLocation = this.createHiddenLocation.bind(this);
         this.createSportSquares = this.createSportSquares.bind(this);
     }
 
@@ -59,6 +60,16 @@ class UserProfile extends React.Component{
 
     createGoogleMapsLink(){
         return `https://maps.google.com/?q=${this.state.profileInfo.user_city} ${this.state.profileInfo.user_state}, ${this.state.profileInfo.user_zip}`;
+    }
+
+    createHiddenLocation(){
+        if(!this.state.user.hide_location){
+            return(
+                <a href={this.createGoogleMapsLink()}>{this.state.profileInfo.user_city}, {this.state.profileInfo.user_state}</a>
+            );
+        } else {
+            return <span className="italic">Location hidden</span>
+        }
     }
 
     createMailToLink(){
@@ -119,13 +130,13 @@ class UserProfile extends React.Component{
         return(
             <section className="userProfile">
                 <section className="userInfo">
-                    <h1>{this.state.user.first_name} {this.state.user.last_name}</h1>
+                    <h1>Hi, I'm {this.state.user.first_name}!</h1>
                     <h2>{this.state.user.user_name}</h2>
-                    <p>Located in: <a href={this.createGoogleMapsLink()}>{this.state.profileInfo.user_city}, {this.state.profileInfo.user_state}</a></p>
+                    <p>Located in: {this.createHiddenLocation()}</p>
                     <p>{this.state.profileInfo.profile_bio}</p>
                 </section>
                 {this.createSportSquares()}
-                <section className="contact">                    
+                <section className="contact">
                     <a href={this.createMailToLink()}><button className="contactPlayer">E-mail this User</button></a>
                 </section>
             </section>

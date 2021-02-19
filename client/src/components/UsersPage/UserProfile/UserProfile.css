@@ -15,6 +15,10 @@
     width: 10.11rem;
 }
 
+.italic{
+    font-style: italic;
+}
+
 .sportSquare{
     border: 3px solid #F00;
     box-shadow: 3px 3px #000;

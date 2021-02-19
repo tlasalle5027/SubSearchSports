@@ -19,11 +19,11 @@
 
 @media only screen and (max-width: 838px) {
     .user{
-        width: 100%;
+        width: auto;
     }
 
     .user h1{
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 
 }
