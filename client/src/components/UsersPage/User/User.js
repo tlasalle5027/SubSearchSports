@@ -17,11 +17,9 @@ class User extends React.Component{
     render(){
         return(
             <section className="user">
-                <section className="userInfo">
-                    <a href={this.createProfileLink()}><h1>{this.props.user.user_name}</h1></a>
-                    <p>{this.props.user.first_name + " " + this.props.user.last_name}</p>
-                    <p>Member Since: {helpers.formatDate(this.props.user.member_since)}</p>
-                </section>
+                <a href={this.createProfileLink()}><h1>{this.props.user.user_name}</h1></a>
+                <p>{this.props.user.first_name + " " + this.props.user.last_name}</p>
+                <p>Member Since: {helpers.formatDate(this.props.user.member_since)}</p>                
             </section>
         );
     }

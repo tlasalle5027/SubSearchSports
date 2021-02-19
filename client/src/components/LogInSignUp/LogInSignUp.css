@@ -7,11 +7,18 @@
     color: #F00;
     font-size: 2rem;
     font-weight: 900;
-    text-shadow: 2px 2px #000000;
-  }
+    text-shadow: 2px 2px #000;
+}
 
 @media only screen and (max-width: 838px) {
     .logInSignUp{       
         top: 97px;
     }
+
+    .logInSignUp h1{
+        font-size: 1.25rem;
+        font-weight: 450;
+        text-shadow: 1px 1px #000;        
+    }
+    
 }
