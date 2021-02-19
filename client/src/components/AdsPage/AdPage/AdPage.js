@@ -60,7 +60,7 @@ class AdPage extends React.Component{
                 <p>Located at: <a href={this.createGoogleMapsLink()}>{this.state.ad.location_name}</a></p>
                 <h2>Date Posted: {this.state.datePosted}</h2>
                 <h2>Date Needed: {this.state.dateNeeded}</h2>
-                <p>Sport: {this.state.sportName} | Position: {this.state.ad.position_needed}</p>
+                <p><span className="bold">Sport:</span> {this.state.sportName} | <span className="bold">Position:</span> {this.state.ad.position_needed}</p>
                 <p>{this.state.ad.ad_body}</p>
             </section>
         );
