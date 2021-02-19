@@ -3,3 +3,7 @@ backend/sql/sql.js
 backend/config/auth.config.js
 client/.eslintcache
 client/src/resources/img/bg/baseball-field.jpg
+client/src/resources/img/Header/baseball-diamond-37200.png
+client/src/resources/img/Header/hockey-rink.jpg
+client/src/resources/img/Header/soccer-field.png
+client/src/resources/img/Header/football-field.jpg

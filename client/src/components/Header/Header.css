@@ -21,11 +21,12 @@
   }
 
 .navigation-bar {
-    width: 100%;
+    background-position: center center; 
+    background-size: cover;
     height: 155px;
     position: fixed;
-    background-color: #0EC339;
-    top: 0;
+    top: 0;    
+    width: 100%;
     z-index: 99;
 }
 
