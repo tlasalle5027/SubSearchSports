@@ -20,3 +20,14 @@
     height: 64px;
     width: 64px;
 }
+
+@media only screen and (max-width: 838px) {
+    .ad{
+        width: auto;
+    }
+
+    .ad h1{
+        font-size: 1.1rem;
+    }
+
+}
