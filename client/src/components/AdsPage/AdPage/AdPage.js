@@ -36,7 +36,6 @@ class AdPage extends React.Component{
             });
 
             apiCalls.getSportName(this.state.ad.sport_needed).then(sport => {
-                console.log(sport);
                 if(sport){
                     this.setState({ sportName: sport[0].sport_name });                
                 }

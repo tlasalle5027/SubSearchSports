@@ -114,6 +114,12 @@ userRouter.param('userId', (req, res, next, userId) => {
     });
 });
 
+userRouter.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //Get a JSON object containing all users in the database
 userRouter.get('/', (req, res, next) => {
     dbConnection.getConnection(function(err, conn) {
@@ -172,7 +178,7 @@ userRouter.post('/', userNameExists, emailExists, (req, res, next) => {
     const email = req.body.email;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
-    const hideLocation = req.body.hideLocation
+    const hideLocation = req.body.hideLocation;
 
     //Check that all required fields exist, else send a 400 error
     if(!userName || !password || !email || !firstName || !lastName){

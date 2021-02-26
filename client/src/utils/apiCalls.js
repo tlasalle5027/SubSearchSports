@@ -157,4 +157,38 @@ apiCalls.getSportName = id => {
     });
 }
 
+/**
+ * The following API Call will register a new user
+ * to the system
+ */
+apiCalls.registerUser = (userName, password, email, firstName, lastName, hideLocation) => {
+    const url = `${baseUrl}/user`;
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'         
+        },
+        body: JSON.stringify({
+            userName: userName,
+            password: password,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            hideLocation: hideLocation
+        })
+      };
+
+    return fetch(url, fetchOptions).then(response => {
+        if(!response.ok){
+            return response.json().then(jsonResponse => {
+                return jsonResponse.message;
+            });
+        }
+
+        return response.json().then(jsonResponse => {
+            return jsonResponse.user.insertId;
+        });
+    });
+}
+
 export default apiCalls;

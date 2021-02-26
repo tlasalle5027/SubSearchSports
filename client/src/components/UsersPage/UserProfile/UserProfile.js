@@ -77,7 +77,6 @@ class UserProfile extends React.Component{
     }
 
     createSportSquares(){
-        console.log(this.state.profileInfo);
         if(this.state.profileInfo.sport_02 == null){
             return (
                 <section className="sportsSquares">
