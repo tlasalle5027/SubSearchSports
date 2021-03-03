@@ -7,3 +7,7 @@ client/src/resources/img/Header/baseball-diamond-37200.png
 client/src/resources/img/Header/hockey-rink.jpg
 client/src/resources/img/Header/soccer-field.png
 client/src/resources/img/Header/football-field.jpg
+client/src/components/Policies/Privacy/Privacy.css
+client/src/components/Policies/Privacy/Privacy.js
+client/src/components/Policies/TermsConditions/TermsConditions.css
+client/src/components/Policies/TermsConditions/TermsConditions.js

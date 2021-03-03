@@ -11,6 +11,8 @@ import UsersPage from '../UsersPage/UsersPage';
 import LogInSignUp from '../LogInSignUp/LogInSignUp';
 import AdPage from '../AdsPage/AdPage/AdPage';
 import UserProfile from '../UsersPage/UserProfile/UserProfile';
+import TermsConditions from '../Policies/TermsConditions/TermsConditions';
+import Privacy from '../Policies/Privacy/Privacy';
 
 class App extends React.Component{
   render(){
@@ -24,6 +26,8 @@ class App extends React.Component{
           <Route exact path="/users" component={UsersPage} />
           <Route exact path="/users/:id" component={UserProfile} />
           <Route exact path="/login" component={LogInSignUp} />
+          <Route exact path="/terms" component={TermsConditions} />
+          <Route exact path="/privacy" component={Privacy} />
         </Switch>          
         <Footer />
       </body>
