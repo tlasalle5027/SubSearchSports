@@ -191,4 +191,30 @@ apiCalls.registerUser = (userName, password, email, firstName, lastName, hideLoc
     });
 }
 
+apiCalls.loginUser = (userName, password) => {
+    const url = `${baseUrl}/user/auth/login`;
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-type': 'applicatiion/json'
+        },
+        body: JSON.stringify({
+            userName: userName,
+            password: password
+        })
+    }
+
+    return fetch(url, fetchOptions).then(response => {
+        if(!response.ok){
+            return response.json().then(jsonResponse => {
+                return jsonResponse.message;
+            });
+        }
+        
+        return response.json().then(jsonResponse => {
+            return jsonResponse.user;
+        });
+    });
+}
+
 export default apiCalls;
