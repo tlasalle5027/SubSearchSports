@@ -1,5 +1,5 @@
 const apiCalls = {};
-const baseUrl = 'http://192.168.0.28:4000/api';
+const baseUrl = 'http://192.168.56.1:4000/api';
 
 /**
  * The following three API calls get counts of Users,
