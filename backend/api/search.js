@@ -3,4 +3,4 @@ const { dbConnection } = require('../sql/sql');
 
 const searchRouter = express.Router();
 
-module .exports = searchRouter;
+module.exports = searchRouter;

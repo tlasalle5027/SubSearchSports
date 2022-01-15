@@ -47,8 +47,7 @@ authRouter.post('/login', (req, res, next) => {
                         email: user[0].email,
                         firstName: user[0].first_name,
                         lastName: user[0].last_name,
-                        accessToken: token
-    
+                        accessToken: token    
                     });
                 }                
             });

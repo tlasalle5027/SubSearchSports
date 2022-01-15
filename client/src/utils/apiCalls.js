@@ -1,5 +1,5 @@
 const apiCalls = {};
-const baseUrl = 'http://192.168.56.1:4000/api';
+const baseUrl = 'http://10.0.0.164:4000/api';
 
 /**
  * The following three API calls get counts of Users,
@@ -191,6 +191,12 @@ apiCalls.registerUser = (userName, password, email, firstName, lastName, hideLoc
     });
 }
 
+/**
+ * The following API Call will login a user
+ * @param {*} userName 
+ * @param {*} password 
+ * @returns 
+ */
 apiCalls.loginUser = (userName, password) => {
     const url = `${baseUrl}/user/auth/login`;
     const fetchOptions = {
